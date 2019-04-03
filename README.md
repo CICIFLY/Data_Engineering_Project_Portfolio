@@ -5,7 +5,7 @@ The projects in the Data Engineer Nanodegree program were designed in collaborat
 
 ## Udacity Data Engineering Course Content
 ### Course 1: Data Modelling with Postgres and Cassandra
-* Week #	            Lesson
+Week #	            Lesson
 * 1	       Introduction to Data Modeling
 * 2	       Relational Data Modeling with Postgres
 * 2	       Project: Data Modeling with Postgres

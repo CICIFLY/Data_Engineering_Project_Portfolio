@@ -5,37 +5,38 @@ The projects in the Data Engineer Nanodegree program were designed in collaborat
 
 ## Udacity Data Engineering Course Content
 ### Course 1: Data Modelling with Postgres and Cassandra
-Week #	Lesson
-1	Introduction to Data Modeling
-2	Relational Data Modeling with Postgres
-2	Project: Data Modeling with Postgres
-3	Non-Relational Modeling with Cassandra
-3	Project: Data Modeling with Cassandra
+* Week #	            Lesson
+* 1	       Introduction to Data Modeling
+* 2	       Relational Data Modeling with Postgres
+* 2	       Project: Data Modeling with Postgres
+* 3	       Non-Relational Modeling with Cassandra
+* 3	       Project: Data Modeling with Cassandra
 
 ### Course 2: Cloud Data Warehouses
-Week #	Lesson
-4	Introduction to the Data Warehouses
-5	Introduction to the Cloud and AWS
-6	Implementing Data Warehouses on AWS
-7	Project: Create a Cloud Data Warehouse
+Week #	           Lesson
+* 4	       Introduction to the Data Warehouses
+* 5	       Introduction to the Cloud and AWS
+* 6	       Implementing Data Warehouses on AWS
+* 7	       Project: Create a Cloud Data Warehouse
 
 ### Course 3: Data Lakes with S3 and Spark
-Week #	Lesson
-8	The Power of Spark
-9	Data Wrangling with Spark
-10	Debugging and Optimizing
-11	Introduction to Data Lakes
-12	Project: Create a Data Lake
+Week #	         Lesson
+* 8	       The Power of Spark
+* 9	       Data Wrangling with Spark
+* 10	     Debugging and Optimizing
+* 11	     Introduction to Data Lakes
+* 12	     Project: Create a Data Lake
 
 ### Course 4: Data Pipelines with Airflow
-Week #	Lesson
-13	Data Pipelines
-14	Data Quality
-15	Production Data Pipelines
-16	Project: Create Data Pipelines
-Capstone Project
-Week #	Lesson
-17	Project: Capstone
+Week #	       Lesson
+* 13	     Data Pipelines
+* 14	     Data Quality
+* 15	     Production Data Pipelines
+* 16	     Project: Create Data Pipelines
+
+### Capstone Project
+Week #	     Lesson
+* 17	    Project: Capstone
 
 ## Projects
 

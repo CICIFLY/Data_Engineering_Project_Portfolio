@@ -4,7 +4,7 @@
 The projects in the Data Engineer Nanodegree program were designed in collaboration with a group of highly talented industry professionals. The projects took me to a role of a Data Engineer at a fabricated data streaming company called “Sparkify” as it scaled its data engineering in both size and sophistication. I worked with simulated data of listening behavior, as well as a wealth of metadata related to songs and artists. At first, I started working with a small amount of data, with low complexity, processed and stored on a single machine. By the end, I developed a sophisticated set of data pipelines to work with massive amounts of data processed and stored on the cloud. There are five projects in the program. Below is a description of each.
 
 ## Udacity Data Engineering Course Content
-Course 1: Data Modelling with Postgres and Cassandra
+### Course 1: Data Modelling with Postgres and Cassandra
 Week #	Lesson
 1	Introduction to Data Modeling
 2	Relational Data Modeling with Postgres
@@ -12,14 +12,14 @@ Week #	Lesson
 3	Non-Relational Modeling with Cassandra
 3	Project: Data Modeling with Cassandra
 
-Course 2: Cloud Data Warehouses
+### Course 2: Cloud Data Warehouses
 Week #	Lesson
 4	Introduction to the Data Warehouses
 5	Introduction to the Cloud and AWS
 6	Implementing Data Warehouses on AWS
 7	Project: Create a Cloud Data Warehouse
 
-Course 3: Data Lakes with S3 and Spark
+### Course 3: Data Lakes with S3 and Spark
 Week #	Lesson
 8	The Power of Spark
 9	Data Wrangling with Spark
@@ -27,7 +27,7 @@ Week #	Lesson
 11	Introduction to Data Lakes
 12	Project: Create a Data Lake
 
-Course 4: Data Pipelines with Airflow
+### Course 4: Data Pipelines with Airflow
 Week #	Lesson
 13	Data Pipelines
 14	Data Quality

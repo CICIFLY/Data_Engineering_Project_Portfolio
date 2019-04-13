@@ -9,7 +9,7 @@ analysis.
 
 ## Project Description
 To complete the project:
-* Define fact and dimension tables for a star schema for a particular analytic focus
+* Define fact and dimension tables for a star schema for a particular analytic focus ( what songs the users are listening to)
 * Write an ETL pipeline that transfers data from files in two local directories into these tables in Postgres using Python and SQL.
 
 ## Softwares:

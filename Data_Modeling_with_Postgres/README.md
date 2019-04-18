@@ -3,8 +3,7 @@
 (2). For the two .ipynb files, you can just open and run it in the workspace.
 But for 3 .py files, you have to open a new terminal to execute them by typing "python filename.py".
 (3). The steps for this project: 
-     * sql_queries.py ---> create_tables.py ----> etl.ipynb----> etl.py ----> test.ipynb
-     ---> readme.md
+     * sql_queries.py ---> create_tables.py ----> etl.ipynb----> etl.py ----> test.ipynb ---> readme.md
 (4). Attention: each time you run create_table.py, you have to restart test.ipynb and etl.ipynb first to close the connection to database. 
 
 # Purpose of this Database

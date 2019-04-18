@@ -1,9 +1,12 @@
 # Files in My Project Repository
 (1). There are 6 files and 1 data folder including two data sets in my repository.
+
 (2). For the two .ipynb files, you can just open and run it in the workspace.
 But for 3 .py files, you have to open a new terminal to execute them by typing "python filename.py".
+
 (3). The steps for this project: 
      * sql_queries.py ---> create_tables.py ----> etl.ipynb----> etl.py ----> test.ipynb ---> readme.md
+     
 (4). Attention: each time you run create_table.py, you have to restart test.ipynb and etl.ipynb first to close the connection to database. 
 
 # Purpose of this Database
@@ -39,10 +42,15 @@ query 1: show the first five rows in songplays table
 
 * result: 
 songplay_id	start_time	user_id	level	song_id	artist_id	session_id	location	user_agent
+
 1	2018-11-29 00:00:57.796000	73	paid	None	None	954	Tampa-St. Petersburg-Clearwater, FL	"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.78.2 (KHTML, like Gecko) Version/7.0.6 Safari/537.78.2"
+
 2	2018-11-29 00:01:30.796000	24	paid	None	None	984	Lake Havasu City-Kingman, AZ	"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36"
+
 3	2018-11-29 00:04:01.796000	24	paid	None	None	984	Lake Havasu City-Kingman, AZ	"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36"
+
 4	2018-11-29 00:04:55.796000	73	paid	None	None	954	Tampa-St. Petersburg-Clearwater, FL	"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.78.2 (KHTML, like Gecko) Version/7.0.6 Safari/537.78.2"
+
 5	2018-11-29 00:07:13.796000	24	paid	None	None	984	Lake Havasu City-Kingman, AZ	"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36"
 
 query 2: show the first five rows in users table

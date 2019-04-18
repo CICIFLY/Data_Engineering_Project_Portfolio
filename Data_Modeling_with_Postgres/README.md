@@ -22,16 +22,23 @@ But for 3 .py files, you have to open a new terminal to execute them by typing "
 
 (1). Database schema: I created a star schema optimized for queries on song analysis. 
      * It contained 5 tables :
+     
      * one fact table:songplays with columns songplay_id, start_time, user_id, level, song_id, artist_id, session_id, location, user_agen
+     
      * four dimension tables
           * users - users in the app with columns user_id, first_name, last_name, gender, level
+          
           * songs - songs in music database with columns song_id, title, artist_id, year, duration
+          
           * artists - artists in music database with columns artist_id, name, location, lattitude, longitude
+          
           * time - timestamps of records in songplays broken down into specific units  with columns start_time, hour, day, week, month, year, weekday
           
 (2). ETL Pipeline
     * Process Song data to insert records into songs and artists tables
+    
     * Process log data to create time and users tables
+    
     * Extract songs table, artists table, and original log file to create songplays table (join songs table, artists table)
     
 # Example Queries and Results for Song Play Analysis

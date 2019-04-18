@@ -13,7 +13,8 @@ To complete the project:
 * Write an ETL pipeline that transfers data from files in two local directories into these tables in Postgres using Python and SQL.
 
 ## Data sets:
-(1). The first dataset is a subset of real data from the Million Song Dataset. Each file is in JSON format and contains metadata about a song and the artist of that song. The files are partitioned by the first three letters of each song's track ID. For example, here are filepaths to two files in this dataset.
+(1). The first dataset is a subset of real data from the Million Song Dataset. Each file is in JSON format and contains metadata about a song and the artist of that song. The files are partitioned by the first three letters of each song's track ID. For example, here are filepaths to two files in this dataset.  
+link to the dataset: https://r766469c826263xjupyterllyjhwqkl.udacity-student-workspaces.com/files/data
 * eg: 
 *     song_data/A/B/C/TRABCEI128F424C983.json
 *     song_data/A/A/B/TRAABJL12903CDCF1A.json

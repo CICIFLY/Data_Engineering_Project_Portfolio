@@ -47,11 +47,11 @@ But for 3 .py files, you have to open a new terminal to execute them by typing "
 
 query 1: show the first five rows in songplays table 
 
-    query:
+    * query:
 
     %sql SELECT * FROM songplays LIMIT 5;
 
-    result: 
+    * result: 
     songplay_id	start_time	user_id	level	song_id	artist_id	session_id	location	user_agent
 
     1	2018-11-29 00:00:57.796000	73	paid	None	None	954	Tampa-St. Petersburg-Clearwater, FL	"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.78.2 (KHTML, like Gecko) Version/7.0.6 Safari/537.78.2"
@@ -115,6 +115,7 @@ query 1: show the first five rows in songplays table
     * result:
     0.7165689149560117 0.2834310850439883
 
-# conclusion: there seems to be far more female users than male users for Spartify music streaming app. 
+# conclusion: there seems to be far more female users than male users for Spartify music streaming app. How to make marketing strategies to attract more male users can be one of the tasks for Spartify. 
+
 
 

@@ -115,7 +115,7 @@ query 1: show the first five rows in songplays table
     * result:
     0.7165689149560117 0.2834310850439883
 
-# conclusion: there seems to be far more female users than male users for Spartify music streaming app. How to make marketing strategies to attract more male users can be one of the tasks for Spartify. 
+# Conclusion: there seems to be far more female users than male users for Spartify music streaming app. How to make marketing strategies to attract more male users can be one of the tasks for Spartify. 
 
 
 

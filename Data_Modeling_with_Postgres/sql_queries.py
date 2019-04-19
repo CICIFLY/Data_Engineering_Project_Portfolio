@@ -10,8 +10,8 @@ time_table_drop = "DROP TABLE IF EXISTS time;"
 
 # CREATE TABLES
 # each table requires a primary key. when it does not have such a column, create a automatically increment one like (songplay_id # serial primary key and id serial primary key )
-
-songplay_table_create = (""" CREATE TABLE IF NOT EXISTS songplays (songplay_id serial primary key , start_time timestamp, user_id int, level varchar, song_id varchar, artist_id varchar, session_id int, location varchar, user_agent varchar ) """)
+# A primary key is required to be NOT NUL
+songplay_table_create = (""" CREATE TABLE IF NOT EXISTS songplays (songplay_id serial primary key, start_time timestamp, user_id int foreign key NOT NULL, level varchar , song_id varchar foreign key NOT NULL, artist_id varchar foreign key NOT NULL, session_id int, location varchar, user_agent varchar ) """)
 
 user_table_create = (""" CREATE TABLE IF NOT EXISTS users (user_id int primary key, first_name varchar, last_name varchar, gender varchar, level varchar) """)
 
@@ -24,17 +24,16 @@ time_table_create = (""" CREATE TABLE IF NOT EXISTS time (id serial primary key,
 
 
 # INSERT RECORDS
-# pay attention to three tables which requires to handle confliction because we set them as primary key (user_id,song_id,artist_id)
+# pay attention to three tables which requires to handle confliction because we set them as primary key (user_id,song_id,artist_id), user table has a special part, coz the level(status) can be changed from free to paid 
 
-songplay_table_insert = (""" INSERT INTO songplays ( start_time, user_id, level, song_id, artist_id, session_id, location , user_agent) VALUES ( %s, %s, %s, %s, %s, %s, %s, %s) """)   
 # songplay_id will increase automatically, it should not be treated as a separate column 
+songplay_table_insert = (""" INSERT INTO songplays ( start_time, user_id, level, song_id, artist_id, session_id, location , user_agent) VALUES ( %s, %s, %s, %s, %s, %s, %s, %s) """)   
 
-user_table_insert = (""" INSERT INTO users (user_id, first_name, last_name, gender, level) VALUES (%s, %s, %s, %s, %s) ON CONFLICT (user_id) DO NOTHING""")
+user_table_insert = (""" INSERT INTO users (user_id, first_name, last_name, gender, level) VALUES (%s, %s, %s, %s, %s) ON CONFLICT (user_id) DO UPDATE SET level='paid' """)
 
 song_table_insert = (""" INSERT INTO songs (song_id, title, artist_id, year, duration) VALUES (%s, %s, %s, %s, %s) ON CONFLICT (song_id) DO NOTHING """)
 
-artist_table_insert = (""" INSERT INTO artists (artist_id, artist_name, artist_location, artist_lattitude, artist_longitude)
-                VALUES (%s, %s, %s, %s, %s) ON CONFLICT (artist_id) DO NOTHING """)
+artist_table_insert = (""" INSERT INTO artists (artist_id, artist_name, artist_location, artist_lattitude, artist_longitude) VALUES (%s, %s, %s, %s, %s) ON CONFLICT (artist_id) DO NOTHING """)
 
 time_table_insert = (""" INSERT INTO time (start_time, hour, day, week, month, year, weekday) VALUES (%s, %s, %s, %s, %s, %s, %s)""")
 

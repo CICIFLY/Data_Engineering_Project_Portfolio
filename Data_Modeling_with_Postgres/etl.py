@@ -6,6 +6,16 @@ from sql_queries import *
 
 # two tables: song and artist are extracted from song file 
 def process_song_file(cur, filepath):
+    """
+    this function would read in the song data, insert song records and artist records into song table and artist table respectively.
+    
+    argument: 
+    cur: the cursor object
+    filepath: the path to the song files
+    
+    return: none
+    
+    """
     # open song file
     df = pd.read_json(filepath, lines=True)
     
@@ -22,6 +32,16 @@ def process_song_file(cur, filepath):
 
 
 def process_log_file(cur, filepath):
+    """
+    this function would read in the log data, insert time data records,users records and songplays records into time, users and  
+    songplays tables respectively.
+    
+    argument: 
+    cur: the cursor object
+    filepath: the path to the log files
+    
+    return: none    
+    """
     # open log file
     df = pd.read_json(filepath, lines=True)
 
@@ -65,6 +85,17 @@ def process_log_file(cur, filepath):
 
 
 def process_data(cur, conn, filepath, func):
+    """
+    this function get all files from directory and iterate all files 
+    
+    arguments:
+    cur: the cursor object 
+    conn: the connection object
+    filepath : path to files 
+    func : specify the function name the program will execute
+    
+    return: none
+    """
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
@@ -84,6 +115,13 @@ def process_data(cur, conn, filepath, func):
 
 
 def main():
+    """
+    this function will tell python intepreter to execute the functions inside it
+    
+    argument: none
+    
+    return: none
+    """
     conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=student")
     cur = conn.cursor()
 
@@ -94,4 +132,7 @@ def main():
 
 
 if __name__ == "__main__":
+    """
+    this part is the necesaary condition to execute python main function
+    """
     main()

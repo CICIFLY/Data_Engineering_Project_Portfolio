@@ -11,19 +11,30 @@ time_table_drop = "DROP TABLE IF EXISTS time;"
 # CREATE TABLES
 # each table requires a primary key. when it does not have such a column, create a automatically increment one like (songplay_id # serial primary key and id serial primary key )
 # A primary key is required to be NOT NUL
-songplay_table_create = (""" CREATE TABLE IF NOT EXISTS songplays (songplay_id serial primary key, start_time timestamp, user_id int foreign key NOT NULL, level varchar , song_id varchar foreign key NOT NULL, artist_id varchar foreign key NOT NULL, session_id int, location varchar, user_agent varchar ) """)
+# foreign keys must reference a unique key in the parent table: pay attention to who references whom
+# which means, a foreign key must reference columns that either are a primary key or form a unique constrain
+
+songplay_table_create = (""" CREATE TABLE IF NOT EXISTS songplays (songplay_id serial, start_time timestamp NOT NULL, user_id int NOT NULL, level varchar, song_id varchar , artist_id varchar, session_id int, location varchar, user_agent varchar,  
+primary key(songplay_id), 
+foreign key (user_id) references users(user_id),
+foreign key(song_id) references songs(song_id),
+foreign key(artist_id) references artists(artist_id),
+foreign key(start_time) references time(start_time))""" )
 
 user_table_create = (""" CREATE TABLE IF NOT EXISTS users (user_id int primary key, first_name varchar, last_name varchar, gender varchar, level varchar) """)
 
 song_table_create = (""" CREATE TABLE IF NOT EXISTS songs (song_id varchar primary key, title varchar, artist_id varchar, year int, duration float) """)
 
-artist_table_create = (""" CREATE TABLE IF NOT EXISTS artists (artist_id varchar primary key, artist_name varchar, artist_location varchar, artist_lattitude float, artist_longitude float) """)
+artist_table_create = (""" CREATE TABLE IF NOT EXISTS artists (artist_id varchar primary key, artist_name varchar, artist_location varchar, artist_lattitude float, artist_longitude float ) """)
 
-time_table_create = (""" CREATE TABLE IF NOT EXISTS time (id serial primary key, start_time time without time zone NOT NULL, hour int NOT NULL, day int NOT NULL, week int NOT NULL, month int NOT NULL, year int NOT NULL, weekday int NOT NULL) """)
+# start_time time without time zone 
+time_table_create = (""" CREATE TABLE IF NOT EXISTS time ( start_time timestamp primary key, hour int NOT NULL, day int NOT NULL, week int NOT NULL, month int NOT NULL, year int NOT NULL, weekday int NOT NULL ) """)
 
 
 
 # INSERT RECORDS
+# primary key (user_id,song_id,artist_id), so they are unique. But in reality, there will be some conflicts. So you need handle conflicts
+
 # pay attention to three tables which requires to handle confliction because we set them as primary key (user_id,song_id,artist_id), user table has a special part, coz the level(status) can be changed from free to paid 
 
 # songplay_id will increase automatically, it should not be treated as a separate column 
@@ -35,7 +46,8 @@ song_table_insert = (""" INSERT INTO songs (song_id, title, artist_id, year, dur
 
 artist_table_insert = (""" INSERT INTO artists (artist_id, artist_name, artist_location, artist_lattitude, artist_longitude) VALUES (%s, %s, %s, %s, %s) ON CONFLICT (artist_id) DO NOTHING """)
 
-time_table_insert = (""" INSERT INTO time (start_time, hour, day, week, month, year, weekday) VALUES (%s, %s, %s, %s, %s, %s, %s)""")
+time_table_insert = (""" INSERT INTO time (start_time, hour, day, week, month, year, weekday) VALUES (%s, %s, %s, %s, %s, %s, %s)
+ON CONFLICT (start_time) DO NOTHING """)
 
 
 # FIND SONGS
@@ -52,8 +64,9 @@ song_select = (""" SELECT s.song_id, a.artist_id
 
 
 # QUERY LISTS
-
-create_table_queries = [songplay_table_create, user_table_create, song_table_create, artist_table_create, time_table_create]
+# the order is important, you should execute the dimension tables first, then fact table. Because there are fks in fact table pointing to dimension tables. So dimension tables must exist first
+# dimension tables in the front 
+create_table_queries = [user_table_create, song_table_create, artist_table_create, time_table_create, songplay_table_create]
 drop_table_queries = [songplay_table_drop, user_table_drop, song_table_drop, artist_table_drop, time_table_drop]
 
 # reference:

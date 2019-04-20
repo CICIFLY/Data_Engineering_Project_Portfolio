@@ -52,9 +52,9 @@ def process_log_file(cur, filepath):
     t = pd.to_datetime( df['ts'] , unit = 'ms')
     
     # insert time data records
-    time_data = list((t.dt.time, t.dt.hour, t.dt.day, t.dt.week,t.dt.month, t.dt.year, t.dt.dayofweek))
+    time_data = list((t, t.dt.hour, t.dt.day, t.dt.week,t.dt.month, t.dt.year, t.dt.dayofweek))
     column_labels = ('timestamp', 'hour', 'day', 'week', 'month', 'year','weekday')
-    time_df = pd.DataFrame(time_data, column_labels).T
+    time_df = pd.DataFrame(dict(zip(column_labels,time_data)),columns=column_labels).reset_index(drop=True) 
 
     for i, row in time_df.iterrows():
         cur.execute(time_table_insert, list(row))

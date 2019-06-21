@@ -6,7 +6,7 @@ A music streaming startup, Sparkify, has grown their user base and song database
 Build a ETL pipeline to extract data from S3 , stage them in Redshift, transform them into a set of dimensional tables for analytics team to find insights about what songs their users are listening to.
 
 
-## The Dataset
+## The Datasets
 There are two datasets that reside in S3. 
 (1). Link to Song data: s3://udacity-dend/song_data
 
@@ -78,7 +78,7 @@ There are two datasets that reside in S3.
 
 
 
-## Exmple Queries 
+## Example Queries 
 (1).Find the popular artists
 
 
@@ -93,7 +93,7 @@ order by song_played desc;
 (4).song plays by level and gender 
 
 
-## references:
+## References:
 * https://www.klipfolio.com/blog/create-sql-dashboard
 * https://docs.aws.amazon.com/redshift/latest/dg/copy-parameters-authorization.html
 * https://github.com/FedericoSerini/DEND-Project-3-Data-Warehouse-AWS/blob/master/sql_queries.py

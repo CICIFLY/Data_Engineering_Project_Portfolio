@@ -46,13 +46,13 @@ def process_song_data(spark, input_data, output_data):
     print(song_df.count())
 
     # extract columns to create songs table
-    songs_table = song_df.select(['song_id','song_title','artist_id','year','duration']).collect()
+    songs_table = song_df.select(['song_id','song_title','artist_id','year','duration']).dropDuplicates().collect()
     
     # write songs table to parquet files partitioned by year and artist     
     songs_table.write.partitionBy('year','artist_id').parquet(output_data + "/songs_table.parquet")
 
     # extract columns to create artists table
-    artists_table = song_df.select(['artist_id','artist_name','artist_location','artist_latitude', 'artist_longitude']).collect()
+    artists_table = song_df.select(['artist_id','artist_name','artist_location','artist_latitude', 'artist_longitude']).dropDuplicates().collect()
     
     # write artists table to parquet files
     artists_table.write.parquet(output_data + "/artists_table.parquet")
@@ -78,7 +78,7 @@ def process_log_data(spark, input_data, output_data):
     log_df = log_df.filter(log_df.page=='NextSong')   
 
     # extract columns for users table    
-    uers_table = log_df.select(['user_id', 'user_first_name', 'user_last_name', 'gender', 'level']).collect()
+    uers_table = log_df.select(['user_id', 'user_first_name', 'user_last_name', 'gender', 'level']).dropDuplicates().collect()
     
     # write users table to parquet files
     users_table.write.parquet(output_data + "/users_table.parquet")
@@ -99,7 +99,7 @@ def process_log_data(spark, input_data, output_data):
     log_df.head(1)
     
     # extract columns to create time table
-    time_table = log_df.select(['start_time', 'hour', 'day', 'week', 'month', 'year', 'weekday']).collect()
+    time_table = log_df.select(['start_time', 'hour', 'day', 'week', 'month', 'year', 'weekday']).dropDuplicates().collect()
     
     # write time table to parquet files partitioned by year and month
     time_table.write.partitionBy('year','month').parquet(output_data + "/time_table.parquet")
@@ -112,10 +112,11 @@ def process_log_data(spark, input_data, output_data):
 
     # extract columns from joined song and log datasets to create songplays table 
     # join two dataframes together by using the shared column 
-    songplays_table = song_df.join(log_df, song_df.artist_name == log_df.artist_name)
+    songplays_table = song_df.join(log_df, (song_df.artist_name == log_df.artist_name) &      
+                                   (song_df.song_title == log_df.song_title) )
     songplays_table.withColumn("songplay_id",  monotonically_increasing_id())
     songplays_table = songplays_table.select( ['start_time', 'user_id', 'level', 'song_id', 
-    'artist_id', 'sessionId', 'user_location','userAgent']).collect()
+    'artist_id', 'sessionId', 'user_location','userAgent']).dropDuplicates().collect()
     songplays_table.printSchema()
     songplays_table.head(1)
     

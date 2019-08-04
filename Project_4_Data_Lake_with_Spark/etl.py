@@ -114,7 +114,7 @@ def process_log_data(spark, input_data, output_data):
     # extract columns from joined song and log datasets to create songplays table 
     # join two dataframes together by using the shared column 
     songplays_table = song_df.join(log_df, (song_df.artist_name == log_df.artist_name) &      
-                                   (song_df.song_title == log_df.song_title) )
+                                   (song_df.song_title == log_df.song_title) & song_df.duration = log_df.length )
     songplays_table.withColumn("songplay_id",  monotonically_increasing_id())
     songplays_table = songplays_table.select( ['start_time', 'user_id', 'level', 'song_id', 
     'artist_id', 'sessionId', 'user_location','userAgent']).dropDuplicates().collect()

@@ -146,6 +146,8 @@
     tar xvzf file.tar.gz   ( by defult, it will be extracted in current working dir)
     
 ### References :
-(1). https://github.com/gfkw/dend-project-5
-(2). https://github.com/jukkakansanaho/udacity-dend-project-5
-(3). https://github.com/FedericoSerini/DEND-Project-5-Data-Pipelines
+   (1). https://github.com/gfkw/dend-project-5
+   
+   (2). https://github.com/jukkakansanaho/udacity-dend-project-5
+   
+   (3). https://github.com/FedericoSerini/DEND-Project-5-Data-Pipelines

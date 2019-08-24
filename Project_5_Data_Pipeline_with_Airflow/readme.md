@@ -137,7 +137,7 @@
     (6). Running create_tables.py script to create tables to AWS Redshift
     
 
-### Note about Workspace
+### Notes about Workspace
     After you have updated the DAG, you will need to run /opt/airflow/start.sh command to start the Airflow web server. Once the Airflow web server is ready, you can access the Airflow UI by clicking on the blue Access Airflow button.
     
     A quality control must be implemented to make sure the workflow can work properly by counting the number of records of each table 

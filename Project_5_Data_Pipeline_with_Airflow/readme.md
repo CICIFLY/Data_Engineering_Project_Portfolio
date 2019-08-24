@@ -145,7 +145,7 @@
     Command to kill the running DAG or reset Airflow : run command  "pkill -f airflow"  ( This one does not work for me. I have to save all files and reset the data in workspace to refresh it)
 
     To extract compression files: 
-    tar xvzf file.tar.gz   ( by defult, it will be extracted in current working dir)
+    tar xvzf file_name.tar.gz   ( by defult, it will be extracted in current working dir)
     
 ### References :
    (1). https://github.com/gfkw/dend-project-5

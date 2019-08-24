@@ -106,13 +106,15 @@
         In the DAG, configure the task dependencies , compare with the graph view with what provided in   
         project instruction.  
         
-    (5). Building the operators
+    (5). Building the operators 
+         (The separate functional operators for dimensions, fact and quality control make the sql statements dynamics)
+
         Stage Operator
         The stage operator is expected to be able to load any JSON formatted files from S3 to Amazon Redshift. The operator creates and 
         runs a SQL COPY statement based on the parameters provided. The operator's parameters should specify where in S3 the file is 
         loaded and what is the target table.
-        The parameters should be used to distinguish between JSON file. Another important requirement of the stage operator is containing   
-        templated field that allows it to load timestamped files from S3 based on the execution time and run backfills.
+        The parameters should be used to distinguish between JSON file. Another important requirement of the stage operator is    
+        containing templated field that allows it to load timestamped files from S3 based on the execution time and run backfills.
         
         Fact and Dimension Operators
         With dimension and fact operators, you can utilize the provided SQL helper class to run data transformations. Most of the logic 
@@ -135,7 +137,7 @@
     (6). Running create_tables.py script to create tables to AWS Redshift
     
 
-### Note about Workspace
+### Notes about Workspace
     After you have updated the DAG, you will need to run /opt/airflow/start.sh command to start the Airflow web server. Once the Airflow web server is ready, you can access the Airflow UI by clicking on the blue Access Airflow button.
     
     A quality control must be implemented to make sure the workflow can work properly by counting the number of records of each table 
@@ -143,9 +145,11 @@
     Command to kill the running DAG or reset Airflow : run command  "pkill -f airflow"  ( This one does not work for me. I have to save all files and reset the data in workspace to refresh it)
 
     To extract compression files: 
-    tar xvzf file.tar.gz   ( by defult, it will be extracted in current working dir)
+    tar xvzf file_name.tar.gz   ( by defult, it will be extracted in current working dir)
     
 ### References :
-(1). https://github.com/gfkw/dend-project-5
-(2). https://github.com/jukkakansanaho/udacity-dend-project-5
-(3). https://github.com/FedericoSerini/DEND-Project-5-Data-Pipelines
+   (1). https://github.com/gfkw/dend-project-5
+   
+   (2). https://github.com/jukkakansanaho/udacity-dend-project-5
+   
+   (3). https://github.com/FedericoSerini/DEND-Project-5-Data-Pipelines

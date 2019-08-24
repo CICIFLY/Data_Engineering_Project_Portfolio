@@ -26,6 +26,7 @@ default_args = {
     'retries' : 3,
     'retry_delay': timedelta(minutes = 5),
     'start_date': datetime(2019, 8,4 ),
+    'end_date' : datetime(2019, 8,15),
     'email_on_retry' : False ,
     'catchup_by_default' : False    
 }
@@ -33,7 +34,7 @@ default_args = {
 dag = DAG('udac_example_dag',
           default_args=default_args,
           description='Load and transform data in Redshift with Airflow',
-          schedule_interval= '@hourly'    
+          schedule_interval= '@hourly'    # according to the data format , dailly is a better choice 
         )
 
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)  

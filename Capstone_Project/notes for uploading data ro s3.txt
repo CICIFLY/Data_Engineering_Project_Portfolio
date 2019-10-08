@@ -1,0 +1,108 @@
+*********************** process ************************************
+upload the files into S3 and use Redshift to directly process the data? Why using PySpark as a part of process
+
+You are free to use any technologies you like in the project
+
+
+
+*********************** load data from workspace to s3 ************************************
+--install aws cli first in workspace 
+* upload the sas data to S3 directly, you have to install awscli in workspace first
+* it must be workspace not your local if you do your project in the workspace 
+
+-- install in local, it did not work for me 
+https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html
+Steps to Take after Installation
+Setting the Path to Include the AWS CLI
+
+Configure the AWS CLI with Your Credentials
+
+Upgrading to the Latest Version of the AWS CLI
+
+Uninstalling the AWS CLI
+
+Setting the Path to Include the AWS CLI
+After you install the AWS CLI, you might need to add the path to the executable file to your PATH variable. For platform-specific instructions, see the following topics:
+
+Linux – Add the AWS CLI Executable to Your Command Line Path
+
+Windows – Add the AWS CLI Executable to Your Command Line Path
+
+
+
+Verify that the AWS CLI installed correctly by running aws --version.
+
+$ aws --version
+aws-cli/1.16.116 Python/3.6.8 Linux/4.14.77-81.59-amzn2.x86_64 botocore/1.12.106
+Configure the AWS CLI with Your Credentials
+Before you can run a CLI command, you must configure the AWS CLI with your credentials.
+
+You store credential information locally by defining profiles in the AWS CLI configuration files, which are stored by default in your user's home directory. For more information, see Configuring the AWS CLI.
+
+Note
+
+If you are running in an Amazon EC2 instance, credentials can be automatically retrieved from the instance metadata. For more information, see Instance Metadata.
+
+Upgrading to the Latest Version of the AWS CLI
+The AWS CLI is updated regularly to add support for new services and commands. To update to the latest version of the AWS CLI, run the installation command again. For details about the latest version of the AWS CLI, see the AWS CLI release notes.
+
+$ pip3 install awscli --upgrade --user
+
+
+
+**********************************read data to spark from s3 *************************
+
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder
+.config("spark.jars.packages","saurfang:spark-sas7bdat:2.0.0-s_2.11")
+.getOrCreate()
+
+immigration_data_dir = 's3://udacity-capstone-project-12138/immigration-data/i94_feb16_sub.sas7bdat'
+
+df_immigration = spark.read.format('com.github.saurfang.sas.spark').load(immigration_data_dir)
+
+
+according to my knowledge, this package com.github.saurfang.sas.spark does not support directly read a directory.
+
+You should try to read file one by one
+
+
+
+******************************** Convert data to convert SAS Date to python datetime in Spark rather than convert the sparkDF to pandas ?
+mport datetime as dt
+
+from pyspark.sql import SparkSession
+
+from pyspark.sql.functions import udf
+
+spark = SparkSession.builder.appName("capstone_project").getOrCreate()
+
+get_date = udf(lambda x: (dt.datetime(1960, 1, 1).date() + dt.timedelta(x)).isoformat() if x else None)
+
+sp_sas_data = spark.read.parquet("sas_data")
+
+sp_sas_data = sp_sas_data.withColumn("arrival_date", get_date(sp_sas_data.arrdate))
+
+sp_sas_data.createOrReplaceTempView("i94")
+
+i94_df = spark.sql("select distinct arrival_date from i94")
+
+
+
+
+*****************read the file "I94_SAS_Labels_Descriptions.SAS"*****************************
+
+You can copy the labels into different files, such as saving I94CIT & I94RES into a file called code.txt
+
+582 = 'MEXICO Air Sea, and Not Reported (I-94, no land arrivals)'
+
+236 = 'AFGHANISTAN'
+
+101 = 'ALBANIA'
+
+316 = 'ALGERIA'
+
+... And then, you can use this way to read the code,
+
+df = pd.read_csv('code.txt', sep=" = ", header=None)

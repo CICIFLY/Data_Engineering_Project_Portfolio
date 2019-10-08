@@ -1,13 +1,25 @@
 
 ## Project Instruction 
 
+* a very important step is to compress the datasets from workspace to a single zip file and upload to s3 bucket : 
+* this is the command :
+   zip -r /home/workspace/data.zip /data/18-83510-I94-Data-2016
+
+
+
 ### Step 1: Scope the Project and Gather Data
 
-    Since the scope of the project will be highly dependent on the data, these two things happen simultaneously. In this step, you’ll:
+    Since the scope of the project will be highly dependent on the data, these two things happen simultaneously. 
+    
+    In this step, I’ll: Identify and gather the data I'll be using for my project(at least two sources and more than 1 million rows.)
+    I picked I94 immigration and us-cities-demographics two datasets from the provided datasets. 
+    
 
-    Identify and gather the data you'll be using for your project (at least two sources and more than 1 million rows). See Project Resources for ideas of what data you can use.
-
-    Explain what end use cases you'd like to prepare the data for (e.g., analytics table, app back-end, source-of-truth database, etc.)
+    The main purpose is for analytics . The following questions are what I try to answer through this project
+    * which coutry sends the most visitors to US in year 2016?
+    * which cities in US attract the most visitors in year 2016 ?
+    * which visa type is the most popular in 2016 ?
+    * Which race has the most number of immigrants to US?
 
 ### Step 2: Explore and Assess the Data
 
@@ -83,3 +95,16 @@
         Below is how you would read the file into a pandas dataframe.
         fname = '../../data2/GlobalLandTemperaturesByCity.csv'
         df = pd.read_csv(fname)
+        
+## Reference:
+##### Part 1:
+##### https://github.com/cheuklau/udacity-capstone
+##### https://github.com/shalgrim/dend_capstone
+
+
+##### Part 2:
+##### https://github.com/saurfang/spark-sas7bdat (reading SAS files from local and distributed filesystems, into Spark DataFrames.)
+##### https://github.com/FedericoSerini/DEND-Capstone-RomeTransportNetwork
+##### https://github.com/sariabod/dend-capstone
+##### https://github.com/akessela/Sparkify-Capstone-Project
+##### https://github.com/Mikemraz/Capstone-Project-Big-Data-Sparkify

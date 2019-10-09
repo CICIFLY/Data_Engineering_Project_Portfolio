@@ -1,5 +1,7 @@
                                                Data_Engineering_Project_Portfolio
 
+Link to my certificate : https://graduation.udacity.com/nd027
+
 ## Introduction 
 The projects in the Data Engineer Nanodegree program were designed in collaboration with a group of highly talented industry professionals. The projects took me to a role of a Data Engineer at a fabricated data streaming company called “Sparkify” as it scaled its data engineering in both size and sophistication. I worked with simulated data of listening behavior, as well as a wealth of metadata related to songs and artists. At first, I started working with a small amount of data, with low complexity, processed and stored on a single machine. By the end, I developed a sophisticated set of data pipelines to work with massive amounts of data processed and stored on the cloud. There are five projects in the program. Below is a description of each.
 

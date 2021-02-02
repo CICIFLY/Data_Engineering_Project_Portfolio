@@ -98,6 +98,7 @@ print(4887/6820 , 1933/6820)
 * result:
 0.7165689149560117 0.2834310850439883
 
-# conclusion: there seems to be far more female users than male users for Spartify music streaming app. 
+# conclusion:
+Accoring to the data given, there are far more female users than male users for Spartify music streaming app. 
 
 
